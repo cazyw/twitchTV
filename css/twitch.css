@@ -1,0 +1,65 @@
+img {
+    border-color: white;
+    border-radius: 25px;
+    border-width: 2px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+.result {
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 20px;
+}
+
+.offline {
+    background-color: #006699;
+
+}
+
+.online {
+    background-color: #00b386;
+}
+
+.logo {
+    padding: 0px 20px 0px 0px;
+}
+
+.streamer {
+    width: 150px;
+    padding: 0px 5px 0px 0px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;  
+    color: white;
+}
+
+a:hover .offline {
+    background-color: #005580;
+}
+
+a:hover .online {
+    background-color: #008060;
+}
+
+a {
+    color: white;
+}
+
+@media (max-width: 575px) {
+    .gameHeading {
+        display: none;
+    }
+}
