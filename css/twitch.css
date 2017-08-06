@@ -61,4 +61,7 @@ a {
     .gameHeading {
         display: none;
     }
+    .streamer {
+        width: 100
+    }
 }
