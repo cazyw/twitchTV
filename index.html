@@ -9,13 +9,44 @@
     <title>Twitch TV</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
     <link href="css\twitch.css" rel="stylesheet">
 </head>
 <body onload="getTwitchStreams()">
 <div class="container-fluid">
     <div class="row">
-    <div id="results" class="results col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2"></div>
+
+    <div id="results" class="results col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+        <div id="header" class="header">
+            <a href="https://www.twitch.tv/" target="_blank">
+                <img id="twitchLogo" src="img\Glitch_White_RGB.png" alt="twitch logo">
+            </a>
+            <h1>Twitch Streamers</h1>
+            <ul>
+            <li class="switches" id="all">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <circle id="allList" cx="5" cy="5" r="5" fill="#D789189" />
+                </svg>
+                All
+            </li>
+            <li class="switches" id="online">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <circle id="onlineList" cx="5" cy="5" r="5" fill="#00b386" />
+                </svg>
+                Online
+            </li>
+            <li class="switches" id="offline">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <circle id="offlineList" cx="5" cy="5" r="5" fill="#006699" />
+                </svg>
+                Offline
+            </li>
+            </ul>
+        </div>
+        <div id="loading-twitch" class="text-center">
+            <i class="fa fa-refresh fa-spin"></i> </br>Getting the streams from Twitch ... 
+        </div>
+    </div>
     </div>
 </div>
 

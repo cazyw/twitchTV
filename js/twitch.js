@@ -3,8 +3,8 @@ function getTwitchStreams() {
     const channelURL = "https://wind-bow.gomix.me/twitch-api/channels/";
     const streamers = ["ESL_SC2", "OgamingSC2", "hexsteph", "bajostream", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
-    streamers.forEach(stream => {
-        //console.log(streamURL + stream);
+    streamers.forEach((stream, index) => {
+        console.log("index", index);
         let streamStatus = "";
 
         // STREAM INFO
@@ -33,7 +33,9 @@ function getTwitchStreams() {
             }
         }).then(() => {
             // CHANNEL INFO
-
+            if (index === 0){
+                document.getElementById("loading-twitch").classList.add("hide");
+            }
             $.ajax({
               dataType: 'jsonp',
               url: channelURL + stream,
@@ -49,7 +51,7 @@ function getTwitchStreams() {
                 let result = "";
                 result += "<a href=\"" + channelURL + "\" target=\"_blank\">";
                 result += "<div id=\"" + stream + "\" class=\"result " + streamStatus + "\">";
-                result += "<div class=\"logo\"><img src=\"" + logo + "\" /></div>";
+                result += "<div class=\"logo\"><img class=\"imglogo\" src=\"" + logo + "\" /></div>";
                 result += "<div class=\"streamer\">" + stream + "</div>";
                 if(streamStatus === "offline") {
                     result += "offline";
@@ -59,6 +61,7 @@ function getTwitchStreams() {
                 }
                         
                 result += "</div></a>";
+                
                 document.getElementById("results").innerHTML += result;
                 
                 

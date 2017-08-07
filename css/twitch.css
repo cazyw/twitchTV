@@ -1,10 +1,33 @@
-img {
+body {
+    font-family: 'Saira', sans-serif;
+    background-color: #BEBEBE;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background-color: #fff;
+    margin-top: 5px;
+    color: #000;
+}
+
+.imglogo {
+    border-style: solid;
     border-color: white;
     border-radius: 25px;
     border-width: 2px;
     width: 50px;
     height: 50px;
     
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .results {
@@ -15,7 +38,11 @@ img {
 }
 
 .result {
-    border: 2px solid #fff;
+    opacity: 0px;
+    border-top: 2px solid #fff;
+    border-right: 0px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 0px solid #fff;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -41,6 +68,15 @@ img {
     padding: 0px 5px 0px 0px;
 }
 
+.switches {
+    padding-left: 2px;
+    width: 100px;
+}
+
+.hide {
+    display: none;
+}
+
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;  
     color: white;
@@ -58,8 +94,58 @@ a {
     color: white;
 }
 
-@media (max-width: 575px) {
+#header {
+    text-transform: uppercase;
+    background-color: #D78918;
+    padding: 0px 5px 0px 10px;
+    color: #fff;
+}
+#loading-twitch {
+    padding-top: 20px;
+}
+
+#twitchLogo {
+    width: 50px;
+    height: 50px;
+}
+
+svg {
+    height: 12px;
+    width: 12px;
+    padding: 1px;
+}
+
+circle {
+    stroke: black;
+}
+
+@media (max-width: 769px) {
+    h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 576px) {
     .gameHeading {
         display: none;
     }
+    h1 {
+        font-size: 1em;
+    }
+    #twitchLogo {
+        width: 30px;
+        height: 30px;
+    }
 }
+
+@media (max-width: 376px) {
+    .streamer {
+        width: 100px;
+    }
+    h1 {
+        font-size: 1em;
+    }
+    
+
+}
+
