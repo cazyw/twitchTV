@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: 'Saira', sans-serif;
     background-color: #BEBEBE;
@@ -16,8 +17,11 @@ li {
 .imglogo {
     border-style: solid;
     border-color: white;
+=======
+img {
+>>>>>>> 89acceb2e9ae6b2688edbf79c25880a3bd615923
     border-radius: 25px;
-    border-width: 2px;
+    border: 2px solid #fff;
     width: 50px;
     height: 50px;
     
@@ -135,6 +139,9 @@ circle {
     #twitchLogo {
         width: 30px;
         height: 30px;
+    }
+    .streamer {
+        width: 100px;
     }
 }
 
