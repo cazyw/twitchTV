@@ -1,3 +1,76 @@
+// function myMove() {
+//     var elem = document.getElementById("animate"); 
+//     var pos = 0;
+//     var id = setInterval(frame, 5);
+//     function frame() {
+//         if (pos == 350) {
+//             clearInterval(id);
+//         } else {
+//             pos++; 
+//             elem.style.top = pos + 'px'; 
+//             elem.style.left = pos + 'px'; 
+//         }
+//     }
+// }
+
+function slideIn(id){
+    console.log("in");
+    let elem = document.getElementById(id);
+    let width = elem.getBoundingClientRect().width; 
+    let height = elem.getBoundingClientRect().height; 
+    let startPoint = elem.getBoundingClientRect().left;
+
+    //document.getElementById(id+"Text").style.visibility = "hidden";
+    document.getElementById(id+"Text").classList.add("hide");
+    elem.style.height = height + 'px';
+    if (width == 100) {
+        let timer = setInterval(frame, 5); 
+        function frame(){
+            let switchWidth = elem.getBoundingClientRect().width; 
+            console.log(switchWidth, " + ", startPoint);
+            if (switchWidth == 20) {
+                clearInterval(timer);
+            } else {
+                switchWidth--;
+                startPoint++;
+                elem.style.width = switchWidth + 'px';
+               // elem.style.left = startPoint + 'px';
+            }
+        }
+    }
+    
+    
+}
+
+function slideOut(id){
+    console.log("out");
+    let elem = document.getElementById(id);
+    let width = elem.getBoundingClientRect().width; 
+    let height = elem.getBoundingClientRect().height; 
+    let startPoint = elem.getBoundingClientRect().left;
+
+    //document.getElementById(id+"Text").style.visibility = "hidden";
+    elem.style.height = height + 'px';
+    if (width == 20) {
+        let timer = setInterval(frame, 5);
+        function frame(){
+            let switchWidth = elem.getBoundingClientRect().width; 
+            console.log(switchWidth, " + ", startPoint);
+            if (switchWidth == 100) {
+                clearInterval(timer);
+                document.getElementById(id+"Text").classList.remove("hide");
+            } else {
+                switchWidth++;
+                startPoint--;
+                elem.style.width = switchWidth + 'px';
+               // elem.style.left = startPoint + 'px';
+            }
+        }
+    }
+    
+    
+}
+
 function getTwitchStreams() {
     const streamURL = "https://wind-bow.gomix.me/twitch-api/streams/";
     const channelURL = "https://wind-bow.gomix.me/twitch-api/channels/";
