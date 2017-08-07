@@ -1,24 +1,11 @@
-// function myMove() {
-//     var elem = document.getElementById("animate"); 
-//     var pos = 0;
-//     var id = setInterval(frame, 5);
-//     function frame() {
-//         if (pos == 350) {
-//             clearInterval(id);
-//         } else {
-//             pos++; 
-//             elem.style.top = pos + 'px'; 
-//             elem.style.left = pos + 'px'; 
-//         }
-//     }
-// }
+
+
 
 function slideIn(id){
     console.log("in");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
     let height = elem.getBoundingClientRect().height; 
-    let startPoint = elem.getBoundingClientRect().left;
 
     //document.getElementById(id+"Text").style.visibility = "hidden";
     document.getElementById(id+"Text").classList.add("hide");
@@ -27,14 +14,12 @@ function slideIn(id){
         let timer = setInterval(frame, 5); 
         function frame(){
             let switchWidth = elem.getBoundingClientRect().width; 
-            console.log(switchWidth, " + ", startPoint);
+            console.log(switchWidth);
             if (switchWidth == 20) {
                 clearInterval(timer);
             } else {
                 switchWidth--;
-                startPoint++;
                 elem.style.width = switchWidth + 'px';
-               // elem.style.left = startPoint + 'px';
             }
         }
     }
@@ -47,7 +32,6 @@ function slideOut(id){
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
     let height = elem.getBoundingClientRect().height; 
-    let startPoint = elem.getBoundingClientRect().left;
 
     //document.getElementById(id+"Text").style.visibility = "hidden";
     elem.style.height = height + 'px';
@@ -55,20 +39,21 @@ function slideOut(id){
         let timer = setInterval(frame, 5);
         function frame(){
             let switchWidth = elem.getBoundingClientRect().width; 
-            console.log(switchWidth, " + ", startPoint);
+            console.log(switchWidth);
             if (switchWidth == 100) {
                 clearInterval(timer);
                 document.getElementById(id+"Text").classList.remove("hide");
             } else {
                 switchWidth++;
-                startPoint--;
                 elem.style.width = switchWidth + 'px';
-               // elem.style.left = startPoint + 'px';
+
             }
         }
     }
-    
-    
+}
+
+function sliding(id) {
+
 }
 
 function getTwitchStreams() {
@@ -145,30 +130,6 @@ function getTwitchStreams() {
         });
 
         
-
-        // // STREAM INFO
-
-        // $.ajax({
-        //   dataType: 'jsonp',
-        //   url: streamURL + stream,
-        //   success: function(data) {
-        //     //console.log(data);
-        //     const streamStatus = data["stream"];
-        //     if (streamStatus === "null" || streamStatus === null){
-        //         console.log("the streamer ", stream, " is offline");
-        //         document.getElementById(stream).getElementsByClassName("streamDetails")[0].innerHTML = "offline";
-        //     }
-
-        //     else {
-        //         console.log("the streamer ", stream, " is online");
-        //         document.getElementById(stream).classList.remove("offline");
-        //         document.getElementById(stream).classList.add("online");
-        //     }
-            
-        //     }, error: function(XMLHttpRequest, textStatus, errorThrown) {
-        //         console.log("hmmm there was an error"); 
-        //     }
-        // });
 
     });
 }
