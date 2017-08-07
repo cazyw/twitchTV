@@ -122,17 +122,36 @@ a {
     height: 20px;
 }
 
+.circle {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin: 5px 0px 5px 2px;
+}
 
-svg {
-    height: 15px;
-    width: 15px;
+#all > .circle {
+    background-color: #D78918;
+}
+
+#online > .circle {
+    background-color: #00b386;
+}
+
+#offline > .circle {
+    background-color: #006699;
+}
+
+/*svg {
+    height: 17px;
+    width: 17px;
     padding-left: 3px;
     padding-top: 5px;
 }
 
 circle {
     stroke: black;
-}
+}*/
 
 @media (max-width: 950px) {
     h1 {
