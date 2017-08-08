@@ -118,7 +118,7 @@ function toggleSwitch(id) {
 function getTwitchStreams() {
     const streamURL = "https://wind-bow.gomix.me/twitch-api/streams/";
     const channelURL = "https://wind-bow.gomix.me/twitch-api/channels/";
-    const streamers = ["ESL_SC2", "OgamingSC2", "hexsteph", "bajostream", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    const streamers = ["ESL_SC2", "OgamingSC2", "hexsteph", "bajostream", "screenplayau", "freecodecamp", "nichboy", "noopkat", "stockstream", "RobotCaleb", "noobs2ninjas"];
 
     streamers.forEach((stream, index) => {
         let streamStatus = "";
@@ -155,7 +155,10 @@ function getTwitchStreams() {
                 const channelURL = data["url"];
                 const game = data["game"];
                 const logo = data["logo"];
-                const gameHeading = data["status"].substring(0,50) + "...";
+                let gameHeading = data["status"];
+                if (gameHeading.length > 50) {
+                    gameHeading = gameHeading.substring(0,50) + "...";
+                }
 
 
                 let result = "";
