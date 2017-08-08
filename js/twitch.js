@@ -1,21 +1,29 @@
 
 
 
-function slideIn(id){
+function contractSwitch(id){
+
     console.log("in");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
     let height = elem.getBoundingClientRect().height; 
 
+    if (elem.classList.contains("fullBar")) return;
+
+    elem.classList.remove("expand");
+    elem.classList.add("contract");
+
     //document.getElementById(id+"Text").style.visibility = "hidden";
     document.getElementById(id+"Text").classList.add("hide");
     elem.style.height = height + 'px';
-    if (width == 100) {
+    if (width <= 80) {
         let timer = setInterval(frame, 5); 
         function frame(){
             let switchWidth = elem.getBoundingClientRect().width; 
             console.log(switchWidth);
             if (switchWidth == 20) {
+                clearInterval(timer);
+            } else if (elem.classList.contains("expand")) {
                 clearInterval(timer);
             } else {
                 switchWidth--;
@@ -27,22 +35,30 @@ function slideIn(id){
     
 }
 
-function slideOut(id){
+function expandSwitch(id){
     console.log("out");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
     let height = elem.getBoundingClientRect().height; 
 
+
+    if (elem.classList.contains("fullBar")) return;
+
+    elem.classList.remove("contract");
+    elem.classList.add("expand");
+
     //document.getElementById(id+"Text").style.visibility = "hidden";
     elem.style.height = height + 'px';
-    if (width == 20) {
+    if (width >= 20) {
         let timer = setInterval(frame, 5);
         function frame(){
             let switchWidth = elem.getBoundingClientRect().width; 
             console.log(switchWidth);
-            if (switchWidth == 100) {
+            if (switchWidth == 80) {
                 clearInterval(timer);
                 document.getElementById(id+"Text").classList.remove("hide");
+            } else if (elem.classList.contains("contract")) {
+                clearInterval(timer);
             } else {
                 switchWidth++;
                 elem.style.width = switchWidth + 'px';
@@ -52,8 +68,51 @@ function slideOut(id){
     }
 }
 
-function sliding(id) {
+function toggleSwitch(id) {
+    console.log(`${id} clicked`);
+    const elem = document.getElementById(id);
+    if (elem.classList.contains("fullBar")) return;
+    const wasBarID = document.getElementsByClassName("fullBar")[0].id;
+    const wasBar = document.getElementById(wasBarID);
+    wasBar.classList.remove("fullBar");
+    contractSwitch(wasBarID);
 
+    elem.classList.add("fullBar");
+    const all = document.getElementsByClassName("result");
+    const online = document.getElementsByClassName("online");
+    const offline = document.getElementsByClassName("offline");
+
+    switch(id){
+        case 'all':
+            [].forEach.call(all, (item) => {
+                if (item.classList.contains("hide")) {
+                    item.classList.remove("hide");
+                }
+            });
+            break;
+        case 'online':
+            [].forEach.call(online, (item) => {
+                if (item.classList.contains("hide")) {
+                    item.classList.remove("hide");
+                }
+            });
+            [].forEach.call(offline, (item) => {
+                item.classList.add("hide");
+            });
+            break;
+        case 'offline':
+            [].forEach.call(offline, (item) => {
+                if (item.classList.contains("hide")) {
+                    item.classList.remove("hide");
+                }
+            });
+            [].forEach.call(online, (item) => {
+                item.classList.add("hide");
+            });
+            break;
+        default:
+            break;
+    }
 }
 
 function getTwitchStreams() {

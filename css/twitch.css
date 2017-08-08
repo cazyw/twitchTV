@@ -78,6 +78,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor:pointer;
 }
 
 .hide {
@@ -118,6 +119,16 @@ a {
 }
 
 #all {
+    width: 80px;
+    height: 20px;
+}
+
+#online {
+    width: 20px;
+    height: 20px;
+}
+
+#offline {
     width: 20px;
     height: 20px;
 }
@@ -152,6 +163,7 @@ a {
 circle {
     stroke: black;
 }*/
+
 
 @media (max-width: 950px) {
     h1 {
