@@ -34,7 +34,6 @@ function contractSwitch(id){
 // animation that expands the switch to also show the switch name
 
 function expandSwitch(id){
-    console.log("out");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
 
@@ -49,7 +48,7 @@ function expandSwitch(id){
     if (width >= 20) {
         let timer = setInterval(frame, 5);
         function frame(){
-            if (switchWidth == 80) {
+            if (width == 80) {
                 clearInterval(timer);
                 document.getElementById(id+"Text").classList.remove("hide");
             } else if (elem.classList.contains("contract")) {
@@ -155,8 +154,9 @@ function getTwitchStreams() {
               success: function(data) {
                 const channelURL = data["url"];
                 const game = data["game"];
-                const gameHeading = data["status"];
                 const logo = data["logo"];
+                const gameHeading = data["status"].substring(0,50) + "...";
+
 
                 let result = "";
                 result += "<a href=\"" + channelURL + "\" target=\"_blank\">";
