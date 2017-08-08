@@ -153,18 +153,6 @@ a {
     background-color: #006699;
 }
 
-/*svg {
-    height: 17px;
-    width: 17px;
-    padding-left: 3px;
-    padding-top: 5px;
-}
-
-circle {
-    stroke: black;
-}*/
-
-
 @media (max-width: 950px) {
     h1 {
         font-size: 1.75em;
@@ -181,6 +169,11 @@ circle {
     #twitchLogo {
         width: 30px;
         height: 30px;
+        padding: 0px;
+        margin-right: 20px;
+    }
+    ul {
+        padding-left: 10px;
     }
     .streamer {
         width: 100px;

@@ -1,33 +1,29 @@
-
-
+// animation that contracts the switch to only show the circle
 
 function contractSwitch(id){
-
-    console.log("in");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
-    let height = elem.getBoundingClientRect().height; 
 
+    // if this switch is active, exit
     if (elem.classList.contains("fullBar")) return;
 
     elem.classList.remove("expand");
     elem.classList.add("contract");
 
-    //document.getElementById(id+"Text").style.visibility = "hidden";
     document.getElementById(id+"Text").classList.add("hide");
-    elem.style.height = height + 'px';
+
+    // timer to contract the width of the switch to 20px
+    // exit when 20px or mouseout
     if (width <= 80) {
         let timer = setInterval(frame, 5); 
         function frame(){
-            let switchWidth = elem.getBoundingClientRect().width; 
-            console.log(switchWidth);
-            if (switchWidth == 20) {
+            if (width == 20) {
                 clearInterval(timer);
             } else if (elem.classList.contains("expand")) {
                 clearInterval(timer);
             } else {
-                switchWidth--;
-                elem.style.width = switchWidth + 'px';
+                width--;
+                elem.style.width = width + 'px';
             }
         }
     }
@@ -35,47 +31,52 @@ function contractSwitch(id){
     
 }
 
+// animation that expands the switch to also show the switch name
+
 function expandSwitch(id){
     console.log("out");
     let elem = document.getElementById(id);
     let width = elem.getBoundingClientRect().width; 
-    let height = elem.getBoundingClientRect().height; 
 
-
+    // if this switch is active, exit
     if (elem.classList.contains("fullBar")) return;
 
     elem.classList.remove("contract");
     elem.classList.add("expand");
 
-    //document.getElementById(id+"Text").style.visibility = "hidden";
-    elem.style.height = height + 'px';
+    // timer to expand the width of the switch to 80px
+    // exit when 100px or mouseenter
     if (width >= 20) {
         let timer = setInterval(frame, 5);
         function frame(){
-            let switchWidth = elem.getBoundingClientRect().width; 
-            console.log(switchWidth);
             if (switchWidth == 80) {
                 clearInterval(timer);
                 document.getElementById(id+"Text").classList.remove("hide");
             } else if (elem.classList.contains("contract")) {
                 clearInterval(timer);
             } else {
-                switchWidth++;
-                elem.style.width = switchWidth + 'px';
+                width++;
+                elem.style.width = width + 'px';
 
             }
         }
     }
 }
 
+// toggles the results list to show all entries or only those who are
+// online or offline
+
 function toggleSwitch(id) {
-    console.log(`${id} clicked`);
     const elem = document.getElementById(id);
+
+    // if this switch is already active, exit
     if (elem.classList.contains("fullBar")) return;
-    const wasBarID = document.getElementsByClassName("fullBar")[0].id;
-    const wasBar = document.getElementById(wasBarID);
-    wasBar.classList.remove("fullBar");
-    contractSwitch(wasBarID);
+
+    // obtain the ID of the switch that was previously active, remove "fullBar"
+    // and contract the switch
+    const prevFullBarID = document.getElementsByClassName("fullBar")[0].id;
+    document.getElementById(prevFullBarID).classList.remove("fullBar");
+    contractSwitch(prevFullBarID);
 
     elem.classList.add("fullBar");
     const all = document.getElementsByClassName("result");
@@ -121,34 +122,29 @@ function getTwitchStreams() {
     const streamers = ["ESL_SC2", "OgamingSC2", "hexsteph", "bajostream", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
     streamers.forEach((stream, index) => {
-        console.log("index", index);
         let streamStatus = "";
 
         // STREAM INFO
-
         $.ajax({
           dataType: 'jsonp',
           url: streamURL + stream,
           success: function(data) {
-            //console.log(data);
             streamOnOff = data["stream"];
             if (streamOnOff === "null" || streamOnOff === null){
                 console.log("the streamer ", stream, " is offline");
                 streamStatus = "offline";
-                //document.getElementById(stream).getElementsByClassName("streamDetails")[0].innerHTML = "offline";
             }
 
             else {
                 console.log("the streamer ", stream, " is online");
                 streamStatus = "online";
-                //document.getElementById(stream).classList.remove("offline");
-                //document.getElementById(stream).classList.add("online");
             }
             
             }, error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log("hmmm there was an error"); 
             }
         }).then(() => {
+
             // CHANNEL INFO
             if (index === 0){
                 document.getElementById("loading-twitch").classList.add("hide");
@@ -157,19 +153,17 @@ function getTwitchStreams() {
               dataType: 'jsonp',
               url: channelURL + stream,
               success: function(data) {
-                //console.log(data);
                 const channelURL = data["url"];
                 const game = data["game"];
                 const gameHeading = data["status"];
                 const logo = data["logo"];
-                //console.log("channel:", channelURL, " game: ", game, " sub heading: ", gameHeading);
-                //console.log("logo:", logo);
 
                 let result = "";
                 result += "<a href=\"" + channelURL + "\" target=\"_blank\">";
                 result += "<div id=\"" + stream + "\" class=\"result " + streamStatus + "\">";
                 result += "<div class=\"logo\"><img class=\"imglogo\" src=\"" + logo + "\" /></div>";
                 result += "<div class=\"streamer\">" + stream + "</div>";
+
                 if(streamStatus === "offline") {
                     result += "offline";
                 } else {
@@ -178,17 +172,13 @@ function getTwitchStreams() {
                 }
                         
                 result += "</div></a>";
-                
                 document.getElementById("results").innerHTML += result;
-                
-                
+                                
                 }, error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log("hmmm there was an error"); 
                 }
             });
         });
-
-        
 
     });
 }
