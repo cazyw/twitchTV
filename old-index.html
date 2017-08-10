@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Twitch TV</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
+    <link href="css\twitch.css" rel="stylesheet">
+</head>
+<body onload="getTwitchStreams()">
+<div class="container-fluid">
+    <div class="row">
+
+    <div id="results" class="results col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+        <div id="header" class="header">
+            <a href="https://www.twitch.tv/" target="_blank">
+                <img id="twitchLogo" src="img\Glitch_White_RGB.png" alt="twitch logo">
+            </a>
+            <h1>Twitch Streamers</h1>
+            <ul>
+            <li class="switches" id="all">
+                <div class="circle"></div>
+                <span id="allText" class="hide">All</span>
+            </li>
+            <li class="switches" id="online" onclick="toggleSwitch('online')" onmouseenter="expandSwitch('online')" onmouseleave="contractSwitch('online')">
+                <div class="circle"></div>
+                <span id="onlineText" class="hide">Online</span>
+            </li>
+            <li class="switches" id="offline" onclick="toggleSwitch('offline')" onmouseenter="expandSwitch('offline')" onmouseleave="contractSwitch('offline')">
+                <div class="circle"></div>
+                <span id="offlineText" class="hide">Offline</span>
+            </li>
+            </ul>
+        </div>
+        <div id="loading-twitch" class="text-center">
+            <i class="fa fa-refresh fa-spin"></i> </br>Getting the streams from Twitch ... 
+        </div>
+    </div>
+    </div>
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js\twitch.js"></script>
+    
+</body>
+</html>

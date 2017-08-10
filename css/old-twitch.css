@@ -1,0 +1,198 @@
+body {
+    font-family: 'Saira', sans-serif;
+    background-color: #BEBEBE;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+li {
+    background-color: #fff;
+    margin-top: 5px;
+    color: #000;
+}
+
+
+
+.imglogo {
+    border-radius: 25px;
+    border: 2px solid #fff;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+.result {
+    opacity: 0px;
+    border-top: 2px solid #fff;
+    border-right: 0px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 0px solid #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 20px;
+}
+
+.offline {
+    background-color: #006699;
+
+}
+
+.online {
+    background-color: #00b386;
+}
+
+.logo {
+    padding: 0px 20px 0px 0px;
+}
+
+.streamer {
+    width: 150px;
+    padding: 0px 5px 0px 0px;
+}
+
+li {
+    padding: 0px 3px 0px 3px;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor:pointer;
+    transition: 0.2s linear;
+}
+
+li:hover {
+    width: 80px;
+}
+
+.hide {
+    display: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;  
+    color: white;
+}
+
+a:hover .offline {
+    background-color: #005580;
+}
+
+a:hover .online {
+    background-color: #008060;
+}
+
+a {
+    color: white;
+}
+
+#header {
+    text-transform: uppercase;
+    background-color: #D78918;
+    padding: 0px 5px 0px 10px;
+    color: #fff;
+}
+#loading-twitch {
+    padding-top: 20px;
+}
+
+#twitchLogo {
+    width: 50px;
+    height: 50px;
+    padding-right: 10px;
+}
+
+#all {
+    width: 20px;
+    height: 20px;
+}
+
+#online {
+    width: 20px;
+    height: 20px;
+}
+
+#offline {
+    width: 20px;
+    height: 20px;
+}
+
+.circle {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin: 5px 0px 5px 2px;
+}
+
+#all > .circle {
+    background-color: #D78918;
+}
+
+#online > .circle {
+    background-color: #00b386;
+}
+
+#offline > .circle {
+    background-color: #006699;
+}
+
+@media (max-width: 950px) {
+    h1 {
+        font-size: 1.75em;
+    }
+}
+
+@media (max-width: 576px) {
+    .gameHeading {
+        display: none;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    #twitchLogo {
+        width: 30px;
+        height: 30px;
+        padding: 0px;
+        margin-right: 20px;
+    }
+    ul {
+        padding-left: 10px;
+    }
+    .streamer {
+        width: 100px;
+    }
+}
+
+@media (max-width: 376px) {
+    .streamer {
+        width: 100px;
+    }
+    h1 {
+        font-size: 1em;
+    }
+    
+
+}
+
