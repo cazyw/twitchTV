@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
     <link href="css\twitch.css" rel="stylesheet">
     <title>Twitch TV</title>
 </head>
@@ -11,15 +12,15 @@
 
 <div class="container">
 <h1>
-    <span><img id="twitchLogo" src="img\Glitch_White_RGB.png" alt="twitch logo"></span>
+    <img id="twitchLogo" src="img\Glitch_White_RGB.png" alt="twitch logo">
     Twitch Streams
-    <span>
-    <ul class="switches">
-        <li>All</li>
-        <li>Online</li>
-        <li>Offline</li>
-    </ul>
-    </span>
+    
+        <ul class="switches">
+            <li class="switch selected" id="all"> <div class="circle"></div> <span class="switchTextOn">All</span></li>
+            <li class="switch" id="online"> <div class="circle"></div> <span class="switchText">Online</span></li>
+            <li class="switch" id="offline"> <div class="circle"></div> <span class="switchText">Offline</span></li>
+        </ul>
+    
 </h1>
 <ul class="results">
 </ul>

@@ -1,20 +1,133 @@
 body {
-    background: #f7f7f7;
+    font-family: 'Saira', sans-serif;
+    background-color: #BEBEBE;
 }
 
-span {
-    display: inline-block;
-    text-align: center;
+
+div {
+    text-align: left;
+    height: 100px;
+    line-height: 100px;
 }
+
 
 h1 {
-    text-align: center;
+    text-transform: uppercase;
+    background-color: #D78918;
+    padding: 0px 5px 0px 10px;
+    margin: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    border-style: solid;
+    border-top: 2px solid #fff;
+    border-right: 0px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-left: 0px solid #fff;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9em;
+}
+
+p {
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover .offline {
+    background-color: #005580;
+}
+
+a:hover .online {
+    background-color: #008060;
 }
 
 .container {
-    width: 460px;
-    border: 2px solid #000;
+    width: 650px;
     margin: 30px auto;
+    height: auto;
+}
+
+.switches {
+    width: 100px;
+    border: 0;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.switch {
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    font-size: 0.5em;
+    cursor: pointer;
+    border: 2px solid #D78918;
+    transition: 0.2s;  
+    background-color: #fff;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.switch:hover {
+    width: 96px;
+}
+
+.switch:hover .switchText {
+    opacity: 0.7;
+    display: inline;
+
+}
+
+.switchText {
+    display: none;
+    opacity: 0;
+    transition: 1.2s; 
+    padding-right: 5px;    
+}
+
+.switchTextOn {
+    opacity: 1;
+    padding-right: 5px;
+}
+
+.selected {
+    height: 20px;
+    width: 96px;
+    line-height: 20px;
+    font-size: 0.5em;
+    cursor: pointer;
+    border: 2px solid #D78918;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
 }
 
 .imglogo {
@@ -22,11 +135,54 @@ h1 {
     border: 2px solid #fff;
     width: 50px;
     height: 50px;
+    margin: auto 23px;
     
+}
+
+.streamer {
+    height: 100px;
+    line-height: 100px;
+    width: 150px;
+}
+
+.gameDetails {
+    height: 80px;
+    max-width: 400px;   
+    margin: 0;
+    padding: 10px 0px 0px 0px;
+}
+
+.offline {
+    background-color: #006699;
+
+}
+
+.online {
+    background-color: #00b386;
+}
+
+.circle {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      border: 1px solid black;
+      margin: 5px 5px 5px 5px;
+}
+
+#all > .circle {
+    background-color: #D78918;
+}
+
+#online > .circle {
+    background-color: #00b386;
+}
+
+#offline > .circle {
+    background-color: #006699;
 }
 
 #twitchLogo {
     width: 50px;
     height: 50px;
-    padding-right: 10px;
+    padding: 25px 10px;
 }

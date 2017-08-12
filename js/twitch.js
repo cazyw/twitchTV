@@ -38,21 +38,23 @@ function getTwitchStreams() {
                 const channelURL = data["url"];
                 const game = data["game"];
                 const logo = data["logo"];
-                let gameHeading = data["status"];
-                if (gameHeading.length > 50) {
-                    gameHeading = gameHeading.substring(0,50) + "...";
+                let gameDescription = data["status"];
+                if (gameDescription.length > 50) {
+                    gameDescription = gameDescription.substring(0,50) + "...";
                 }
 
 
                 let result = "";
                 result += `<a href=\"${channelURL}\" target=\"_blank\">`;
-                result += `<li class=\"${streamStatus}\"><span><img class=\"imglogo\" src=\"${logo}\"></span><span>${stream}</span>`
+                result += `<li class=\"${streamStatus}\">`;
+                result += `<img class=\"imglogo\" src=\"${logo}\">`;
+                result += `<div class=\"streamer\">${stream}</div>`;
 
                 if(streamStatus === "offline") {
-                    result += "<span>offline</span>";
+                    result += "<div>offline</div>";
                 } else {
-                    result += "<span><div class=\"streamDetails\">" + game + "</div>";
-                    result += "<div class=\"gameHeading\">" + gameHeading + "</div></span>";   
+                    result += "<div class=\"gameDetails\"><p class=\"gameName\">" + game + "</p>";
+                    result += "<p class=\"gameDescription\">" + gameDescription + "</p></div>";   
                 }
 
                 result += `</li>`;
@@ -60,22 +62,6 @@ function getTwitchStreams() {
 
                 $(".results").append(result);    
 
-                // let result = "";
-                // result += "<a href=\"" + channelURL + "\" target=\"_blank\">";
-                // result += "<div id=\"" + stream + "\" class=\"result " + streamStatus + "\">";
-                // result += "<div class=\"logo\"><img class=\"imglogo\" src=\"" + logo + "\" /></div>";
-                // result += "<div class=\"streamer\">" + stream + "</div>";
-
-                // if(streamStatus === "offline") {
-                //     result += "offline";
-                // } else {
-                //     result += "<div class=\"streamDetails\">" + game + "<br />";
-                //     result += "<span class=\"gameHeading\">" + gameHeading + "</span></div>";   
-                // }
-                        
-                // result += "</div></a>";
-                // document.getElementById("results").innerHTML += result;
-                                
                 }, error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log("hmmm there was an error"); 
                 }
@@ -84,6 +70,58 @@ function getTwitchStreams() {
 
     });
 }
+
+function toggleSwitches (hitSwitch, offSwitch){
+    $(".switches li").removeClass("selected");
+    $(".switches span").removeClass("switchTextOn").addClass("switchText");
+    $(`#${hitSwitch}`).addClass("selected");
+    $(`#${hitSwitch} span`).removeClass("switchText").addClass("switchTextOn");
+
+    switch(hitSwitch){
+        case 'all':
+            $(".online").fadeIn(500);
+            $(".offline").fadeIn(500);
+            break;
+        default:
+            $(`.${hitSwitch}`).fadeIn(500);
+            $(`.${offSwitch}`).fadeOut(500);
+            break;
+    }
+}
+
+
+$(".switch").on("click", function(){
+    let thisID = this.id;
+
+    if ($(this).hasClass("selected")) return;
+
+    switch (thisID){
+        case 'all':
+            console.log("selected all");
+            toggleSwitches("all", "all");
+            break;
+        case 'online':
+            console.log("selected online");
+            toggleSwitches("online", "offline");
+            // $(".switches li").removeClass("selected");
+            // $(".switches span").removeClass("switchTextOn").addClass("switchText");
+            // $("#online").addClass("selected");
+            // $("#online span").addClass("switchTextOn");
+            // $(".offline").fadeOut(500);
+            // $(".online").fadeIn(500);
+            break;
+        case 'offline':
+            console.log("selected offline");
+            toggleSwitches("offline", "online");
+            // $(".online").fadeOut(500);
+            // $(".offline").fadeIn(500);
+            break;
+        default:
+            console.log("no selection");
+            break;
+    }
+
+});
 
 
 $(document).ready(function() {
