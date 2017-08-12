@@ -117,6 +117,7 @@ $(".switch").on("click", function(){
 });
 
 
+
 $(document).ready(function() {
     console.log("ready");
     getTwitchStreams();
