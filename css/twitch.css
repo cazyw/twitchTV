@@ -105,6 +105,7 @@ a:hover .online {
     opacity: 0.7;
     display: block;
     transition: 0.5s ease-out 0s; 
+    padding-right: 5px;  
 
 }
 
@@ -112,7 +113,7 @@ a:hover .online {
     display: none;
     opacity: 0;
     transition: 1.2s; 
-    padding-right: 5px;    
+    padding-right: 0px;    
 }
 
 .switchTextOn {
