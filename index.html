@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Saira" rel="stylesheet">
     <link href="css\twitch.css" rel="stylesheet">
     <title>Twitch TV</title>
@@ -13,7 +14,7 @@
 <div class="container">
 <h1>
     <img id="twitchLogo" src="img\Glitch_White_RGB.png" alt="twitch logo">
-    Twitch Streams
+    <span class="heading">Twitch Streams</span>
     
         <ul class="switches">
             <li class="switch selected" id="all"> <div class="circle"></div> <span class="switchTextOn">All</span></li>
@@ -22,6 +23,11 @@
         </ul>
     
 </h1>
+
+<div id="loading-twitch" class="text-center">
+    <i class="fa fa-refresh fa-spin"></i> </br>Getting the streams from Twitch ... 
+</div>
+
 <ul class="results">
 </ul>
 </div>

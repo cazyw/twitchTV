@@ -43,9 +43,8 @@ li {
 }
 
 p {
-    height: 40px;
-    line-height: 40px;
-    box-sizing: border-box;
+    height: 15px;
+    line-height: 15px;
     margin: 0;
     padding: 0;
     
@@ -70,6 +69,10 @@ a:hover .online {
     height: auto;
 }
 
+.heading {
+    padding: 0px 15px;
+}
+
 .switches {
     width: 100px;
     border: 0;
@@ -87,7 +90,7 @@ a:hover .online {
     font-size: 0.5em;
     cursor: pointer;
     border: 2px solid #D78918;
-    transition: 0.2s;  
+    transition: 0.5s;  
     background-color: #fff;  
     display: flex;
     flex-direction: row;
@@ -100,7 +103,8 @@ a:hover .online {
 
 .switch:hover .switchText {
     opacity: 0.7;
-    display: inline;
+    display: block;
+    transition: 0.5s ease-out 0s; 
 
 }
 
@@ -146,10 +150,12 @@ a:hover .online {
 }
 
 .gameDetails {
-    height: 80px;
+    height: 100px;
     max-width: 400px;   
     margin: 0;
-    padding: 10px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .offline {
@@ -185,4 +191,41 @@ a:hover .online {
     width: 50px;
     height: 50px;
     padding: 25px 10px;
+}
+
+#loading-twitch {
+    padding: 30px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: 30px;
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .gameDescription{
+        display: none;
+    }
+    .heading {
+        line-height: 30px;
+    }
+    .streamer {
+        width: 100px;
+    } 
+    
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 0.55em;
+        line-height: 20px;
+    }
+    #twitchLogo {
+        width: 30px;
+        height: 30px;
+    }
 }

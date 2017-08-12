@@ -28,9 +28,10 @@ function getTwitchStreams() {
         }).then(() => {
 
             // CHANNEL INFO
-            // if (index === 0){
-            //     document.getElementById("loading-twitch").classList.add("hide");
-            // }
+            if (index === 0){
+                $("#loading-twitch").fadeOut();
+            }
+
             $.ajax({
               dataType: 'jsonp',
               url: channelURL + stream,
@@ -39,6 +40,7 @@ function getTwitchStreams() {
                 const game = data["game"];
                 const logo = data["logo"];
                 let gameDescription = data["status"];
+                
                 if (gameDescription.length > 50) {
                     gameDescription = gameDescription.substring(0,50) + "...";
                 }
@@ -65,11 +67,10 @@ function getTwitchStreams() {
                 }, error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log("hmmm there was an error"); 
                 }
-            });
-        });
-
-    });
-}
+            }); // end ajax channel
+        }); // ends then
+    }); // ends foreach
+} // ends function
 
 function toggleSwitches (hitSwitch, offSwitch){
     $(".switches li").removeClass("selected");
@@ -103,18 +104,10 @@ $(".switch").on("click", function(){
         case 'online':
             console.log("selected online");
             toggleSwitches("online", "offline");
-            // $(".switches li").removeClass("selected");
-            // $(".switches span").removeClass("switchTextOn").addClass("switchText");
-            // $("#online").addClass("selected");
-            // $("#online span").addClass("switchTextOn");
-            // $(".offline").fadeOut(500);
-            // $(".online").fadeIn(500);
             break;
         case 'offline':
             console.log("selected offline");
             toggleSwitches("offline", "online");
-            // $(".online").fadeOut(500);
-            // $(".offline").fadeIn(500);
             break;
         default:
             console.log("no selection");
